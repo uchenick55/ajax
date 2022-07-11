@@ -1,26 +1,16 @@
-var a=5;
-$.ajax("https://repetitora.net/api/JS/Images");
-
-a=8;
-console.log(a);
-
-
-
-
-
-
-
-
+$.ajax({
+    url: 'https://repetitora.net/api/JS/Images',
+    success: function(data){
+        data.map((d)=>{
+            console.log(d.thumbnail);
+            let img4 = document.createElement('img')
+            img4.src = d.thumbnail;
+            document.body.appendChild(img4)
+        })
+    }
+});
 
 
 
 
-/*
 
-const resultBlock = document.querySelector("#result");
-const clickMeButton = document.querySelector("#click-me");
-clickMeButton.addEventListener("click", makeRequest);
-
-function makeRequest() {
-    resultBlock.innerHTML = "reqult";
-}*/
