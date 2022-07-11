@@ -1,15 +1,18 @@
-$.ajax({
-    url: 'https://repetitora.net/api/JS/Images',
-    success: function(data){
-        data.map((d)=>{
-            console.log(d.thumbnail);
-            let img4 = document.createElement('img')
-            img4.src = d.thumbnail;
-            document.body.appendChild(img4)
-        })
-    }
-});
+const pageNumberEl = document.querySelector("#page-number")
+const clickMeButton = document.querySelector("#click-me")
+clickMeButton.addEventListener('click', makeRequest)
 
+function makeRequest() {
+    $.ajax(`https://repetitora.net/api/JS/Images?page=${pageNumberEl.value}&count=1`, {
+        success: function (data) {
+            data.forEach((d) => {
+                const img6 = document.createElement('img')
+                img6.src = d.thumbnail
+                document.querySelector('#result').appendChild(img6)
+            })
+        }
+    });
+}
 
 
 
