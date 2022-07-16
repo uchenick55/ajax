@@ -1,8 +1,33 @@
-<button id="click-me">Click Me8</button>
-<input id="page-number" value="2">
-<div id="result"></div>
+<script>
 
-<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    var prom = doItAfter(4);
+    prom
+        .then((massiv) => {
+            setTimeout(() => {
+                console.log(massiv)
+            }, 3000)
+        })
+        .then(() => {
+            setTimeout(() => {
+                console.log('.then2 (resolve)')
+            }, 4000)
+        })
+        .catch(() => {
+            setTimeout(() => {
+                console.log('.catch (reject) ')
+            }, 5000)
+        })
 
-<script src="service.js"></script>
-<script src="index.js"></script>
+
+    function doItAfter(seconds) {
+        let promise =
+            new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    console.log("Step1: async resolve() SetTimeout1 finished");
+                    resolve("Lesha");
+                    //reject();
+                }, 3000)
+            })
+        return promise;
+    }
+</script>
