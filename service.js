@@ -4,3 +4,18 @@ function getImages (pageNumber, successCallBack) {
         return (responce.data);
     })
 }
+
+function createTask (title) {
+    const promise = axios.post(`https://repetitora.net/api/JS/Tasks?widgetId=12345&title=${title}`);
+    return promise.then((responce)=>{
+        return (responce.data);
+    })
+}
+
+function getTask () {
+    const promise = axios.get(`https://repetitora.net/api/JS/Tasks?widgetId=12345`);
+    return promise.then((responce)=>{
+        return (responce.data);
+    })
+}
+
