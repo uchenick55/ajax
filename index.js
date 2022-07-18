@@ -19,14 +19,30 @@ function onImagesRecieved(data) {
 
 //-----------------------
 
-/*
-createTask("learn JS1")
+
+/*createTask("learn JS3")
     .then((data)=>{
+        console.log(data)
+    })*/
+
+//-----------------------
+
+/*
+deleteTask("51c2e92b-d0d7-4607-a03a-404fea84e08e")
+    .then((data)=>{
+        console.log(data.status + " removed")
+    })*/
+
+//-----------------------
+
+updateTask("e0b6c36e-9fd0-465e-98f1-788643e4005e", "title updated")
+    .then((data)=>{
+        debugger
         console.log(data)
     })
 
 //-----------------------
-*/
+
 
 const getTasksButton = document.querySelector(`#get-tasks`);
 

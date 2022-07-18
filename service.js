@@ -23,12 +23,24 @@ function getTask () {
     })
 }
 
-function deleteTask () {
-    const promise = axios.delete(`https://repetitora.net/api/JS/Tasks?widgetId=12345`);
+function deleteTask (id) {
+    const promise = axios.delete(`https://repetitora.net/api/JS/Tasks?widgetId=12345&taskId=${id}`);
     return promise.then((responce)=>{
         return (responce.data);
     })
 }
+
+function updateTask (id_update, title_update) {
+    const promise = axios.put(`https://repetitora.net/api/JS/Tasks`, {
+        widgetId: 12345,
+        taskId: id_update,
+        title : title_update,
+    });
+    return promise.then((responce)=>{
+        return (responce.data);
+    })
+}
+
 
 
 
