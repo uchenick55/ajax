@@ -19,12 +19,14 @@ function onImagesRecieved(data) {
 
 //-----------------------
 
+/*
 createTask("learn JS1")
     .then((data)=>{
         console.log(data)
     })
 
 //-----------------------
+*/
 
 const getTasksButton = document.querySelector(`#get-tasks`);
 
@@ -34,10 +36,32 @@ getTasksButton.addEventListener("click", () => {
 })
 
 function onTaskRecieved(array) {
+    const result = document.querySelector(`#tasks-result`)
+    result.innerHTML = "";
     array.forEach((task) => {
         const li7 = document.createElement('li')
-        li7.innerHTML = task;
-        document.querySelector(`#tasks-result`).appendChild(li7)
+        li7.id = task.id;
+        li7.innerHTML = task.title;
+        result.appendChild(li7);
     });
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
