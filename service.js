@@ -1,61 +1,46 @@
-function getImages (pageNumber, successCallBack) {
-    const promise = axios.get(`https://repetitora.net/api/JS/Images?page=${pageNumber}&count=1`);
-    return promise.then((responce)=>{
-        return (responce.data);
-    })
+function getImages(pageNumber) {
+    return axios.get(`https://repetitora.net/api/JS/Images?page=${pageNumber.value}&count=1`)
+        .then((response)=>{
+            return response.data
+        })
 }
 
+//+++/+&
 
-function createTask (title) {
-    const promise = axios.post(`https://repetitora.net/api/JS/Tasks`, {
+function createTask(title) {
+    return axios.post(`https://repetitora.net/api/JS/Tasks`, {
         widgetId: 12345,
-        title : title,
-    });
-    return promise.then((responce)=>{
-        return (responce.data);
+        title: title
     })
+        .then((response)=>{
+            return response.data
+        })
 }
 
-function getTask () {
-    const promise = axios.get(`https://repetitora.net/api/JS/Tasks?widgetId=12345&count=30`);
-    return promise.then((responce)=>{
-        return (responce.data);
-    })
+function getTasks() {
+    return axios.get(`https://repetitora.net/api/JS/Tasks?widgetId=12345&count=30`)
+        .then((response)=>{
+            return response.data
+        })
 }
 
-function deleteTask (id) {
-    const promise = axios.delete(`https://repetitora.net/api/JS/Tasks?widgetId=12345&taskId=${id}`);
-    return promise.then((responce)=>{
-        return (responce.data);
-    })
-}
-
-function updateTask (id_update, title_update) {
-    const promise = axios.put(`https://repetitora.net/api/JS/Tasks`, {
+function changeTask(taskId, title_update) {
+    return axios.put(`https://repetitora.net/api/JS/Tasks`, {
         widgetId: 12345,
-        taskId: id_update,
-        title : title_update,
-    });
-    return promise.then((responce)=>{
-        return (responce.data);
+        taskId: taskId,
+        title: title_update
     })
+        .then((response)=>{
+            return response.data
+        })
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+function deleteTask(task_id) {
+    return axios.delete(`https://repetitora.net/api/JS/Tasks?widgetId=12345&taskId=${task_id}`)
+        .then((response)=>{
+            return response.data
+        })
+}
 
 
 
