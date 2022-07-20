@@ -24,11 +24,12 @@ function getTasks() {
         })
 }
 
-function changeTask(taskId, title_update) {
+function editTask(taskId, title_update) {
     return axios.put(`https://repetitora.net/api/JS/Tasks`, {
         widgetId: 12345,
         taskId: taskId,
-        title: title_update
+        title: title_update,
+/*        done: task_status*/
     })
         .then((response)=>{
             return response.data

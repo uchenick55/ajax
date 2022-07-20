@@ -18,7 +18,7 @@ function successCallback(data) {
 
 //+++/+&
 
-//--------------------------------------------POST-----------------------
+//--------------------------------------------POST (Add)-----------------------
 
 const addTasksButton = document.querySelector("#create-task")
 const taskTitle = document.querySelector("#task-input")
@@ -30,6 +30,7 @@ addTasksButton.addEventListener('click', () => {
 
 function createTaskCallback(data) {
     console.log("task create status: " + data.status)
+    taskTitle.value=""
     getTasks()
         .then(getTasksCallback)
 }
@@ -49,13 +50,15 @@ getTasksButton.addEventListener('click', () => {
 function getTasksCallback(data) {
     const result = document.querySelector("#tasks-result");
     result.innerHTML = "";
+    console.clear();
     data.forEach((d) => {
         const li7 = document.createElement('li');
         li7.innerHTML = d.id;
-        console.log(d.title, d.id)
+        console.log(d.done ,d.id, d.title)
         result.appendChild(li7)
     })
 }
+
 //--------------------------------------------DELETE-----------------------
 const deleteTasksButton = document.querySelector("#delete-task");
 const deleteTaskId = document.querySelector("#delete-task-id");
@@ -63,26 +66,32 @@ const deleteTaskId = document.querySelector("#delete-task-id");
 deleteTasksButton.addEventListener('click', () => {
     deleteTask(deleteTaskId.value).then((data) => {
         console.log("delete status: " + data.status)
+        deleteTaskId.value="";
         getTasks()
             .then(getTasksCallback)
 
+    });
 });
+
+
+//--------------------------------------------Edit (PUT)-----------------------
+
+const editTaskButton = document.querySelector("#edit-task");
+const editTaskId = document.querySelector("#edit-task-id");
+const editTaskInput = document.querySelector("#edit-task-input");
+editTaskButton.addEventListener('click', () => {
+    editTask(editTaskId.value, editTaskInput.value).then((data) => {
+        console.log("task changed status: " + data.status);
+        editTaskId.value = "";
+        editTaskInput.value = "";
+        getTasks()
+            .then(getTasksCallback)
+        }
+    );
 });
 
 
 
 
-/*
-deleteTask("53f02d0b-3b8d-4a2e-8e11-d75a969db302").then((data) => {
-        console.log("delete status: " + data.status)
-    }
-);
-*/
 
 
-/*
-changeTask("6fa5be19-cc04-4454-9510-259bc3563259", "ashdfkhadwhf").then((data) => {
-        console.log("task changed status: " + data.status)
-    }
-);
-*/
